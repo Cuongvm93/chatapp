@@ -151,7 +151,7 @@ view.setScreenActive = (screenName) => {
                 //     view.chatMessage(message)
                 //     view.chatMessage(messageFromBot)
                 //  document.getElementById("body-container").scrollTop=document.getElementById("body-container").scrollHeight
-                // formChat.input.value = ""
+                formChat.input.value = ""
             })
 
             //Hiện thị ngày giờ
