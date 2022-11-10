@@ -50,7 +50,7 @@ model.login = async (data) => {
             try{
             let respone= await  firebase.firestore()
             .collection("Message")
-            .doc("e3UyS5qwuYMQzDJ2qOjG")
+            .doc("97eOFwBxoYOoRWB96ytk")
             .get();
             console.log(respone.data().content);
             data=respone.data().content
@@ -91,7 +91,7 @@ model.login = async (data) => {
 }
 
 // update content message
-let uid="e3UyS5qwuYMQzDJ2qOjG";
+let uid="97eOFwBxoYOoRWB96ytk";
 // let arr=[]
 // model.getData=(data)=>{// get mảng data tin nhắn về trước sau đó push mới vào
 //     arr=data
@@ -99,7 +99,7 @@ let uid="e3UyS5qwuYMQzDJ2qOjG";
 // console.log(arr);
 model.updateFireStoreQueries=async(data)=>{
     try{
-        // arr.push(data)
+        console.log(data);
         let respone=await firebase.firestore()
         .collection("Message")
         .doc(uid)
@@ -108,6 +108,20 @@ model.updateFireStoreQueries=async(data)=>{
    
     } catch(error){
       console.log((error.message));
+    }
+}
+// delete fieldValue
+model.deleteFiretoreQueries=async()=>{
+    try{
+        console.log("11112122133");
+        let respone=await firebase.firestore()
+        .collection("Message")
+        .doc(uid)
+        .update({message:firebase.firestore.FieldValue.delete()})
+        
+    }
+    catch(error){
+        console.log(error.message);
     }
 }
 // model.snapshoot=async()=>{

@@ -89,7 +89,7 @@ font-size: 30px;
  flex-grow: 13;
    
 }
-.body-container .chat-me {
+.body-container #chat-me {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -98,8 +98,8 @@ font-size: 30px;
     margin-right: 3px;
 }
 
-.body-container .chat-me .content {
-    display: flex;
+.body-container #chat-me .content {
+    
     max-width: 40%;
     width:  max-content;
     background-color: rgba(52, 153, 215, 0.783);
@@ -110,6 +110,7 @@ font-size: 30px;
     margin-right: 3px;
 }
 #viewTime{
+    cursor: pointer;
     width: max-content;
     height: max-content;
     padding: 3px;
@@ -120,9 +121,10 @@ font-size: 30px;
 .active{
     display: block;
 }
-.body-container .chat-owner .content {
-    display: flex;
-    word-break: break-all;
+
+.body-container #chat-owner .content {
+   
+
     max-width: 40%;
     width: max-content;
     background-color: rgba(121, 125, 128, 0.514);

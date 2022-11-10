@@ -13,7 +13,7 @@ window.onload=()=>{
     const fireStoreQueries=async()=>{
         try{
         let respone= await  firebase.firestore().collection("Message")
-        .doc("e3UyS5qwuYMQzDJ2qOjG").get();
+        .doc("97eOFwBxoYOoRWB96ytk").get();
         console.log(respone.data().content);
         data=respone.data().content
         model.getData(data)// gọi hàm get data
@@ -84,19 +84,19 @@ window.onload=()=>{
         name:"Cuong vu"
     }
     //update document
-   let uid="rgRUVMzICs1NSjJmFvZG";
-   const updateFireStoreQueries=async()=>{
-    try{
-        let respone=await firebase.firestore()
-        .collection("users")
-        .doc(uid)
-        .update(updateField);
-    console.log(respone);
-    } catch(error){
-      console.log((error.message));
-    }
-}
-updateFireStoreQueries() 
+//    let uid="rgRUVMzICs1NSjJmFvZG";
+//    const updateFireStoreQueries=async()=>{
+//     try{
+//         let respone=await firebase.firestore()
+//         .collection("users")
+//         .doc(uid)
+//         .update(updateField);
+//     console.log(respone);
+//     } catch(error){
+//       console.log((error.message));
+//     }
+// }
+// updateFireStoreQueries() 
 // Delete 
 // let respone=await firebase.firestore()
 //         .collection("users")
@@ -105,7 +105,7 @@ updateFireStoreQueries()
 
 firebase.firestore()
 .collection("Message")
-.doc("e3UyS5qwuYMQzDJ2qOjG")
+.doc("97eOFwBxoYOoRWB96ytk")
 .onSnapshot((data)=>{
   console.log("cóadasdad",data.data())
   let dataContent=data.data().message

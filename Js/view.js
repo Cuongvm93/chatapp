@@ -124,7 +124,8 @@ view.setScreenActive = (screenName) => {
                 var datetime = currentdate.getDate() + "/" + currentdate.getMonth()
                     + "/" + currentdate.getFullYear() + " " + "-" + " "
                     + currentdate.getHours() + ":"
-                    + currentdate.getMinutes()
+                    + currentdate.getMinutes() + ":"
+                    + currentdate.getSeconds()
                 console.log(datetime);
                 let dataInput = formChat.input.value;
                 console.log("7777", dataUser)
@@ -176,10 +177,12 @@ view.setScreenActive = (screenName) => {
             if (mess[i].owner == firebase.auth().currentUser.displayName) {
                 createElement += `
             
-            <div class="chat-me">
+            <div class="container-message" id="chat-me">
             ${mess[i].owner}
+            
             <div class="content">
             ${mess[i].content}
+            
             </div>
             </div>
             `
@@ -187,10 +190,12 @@ view.setScreenActive = (screenName) => {
             } else {
                 createElement+= `       
                 
-            <div class="chat-owner">
+            <div class="container-message" id="chat-owner">
             ${mess[i].owner}
+            
             <div class="content">
             ${mess[i].content}
+           
             </div>
             </div>
             `
@@ -199,25 +204,42 @@ view.setScreenActive = (screenName) => {
         
         document.getElementById("body-container").innerHTML= createElement
     }
-    // View time message
+    // View time message & remove
     view.TimeMessage=(data)=> {
         let arr=document.querySelectorAll(".content")
         arr.forEach((item,index)=>{
-            item.addEventListener("mouseover",(event)=>{
+            item.addEventListener("click",(event)=>{
             //remove div cũ trước
             let a=document.getElementById("viewTime")
+            console.log(a);
             if(a){
+             console.log(112);
                 a.remove()
-            }
+            } else{
             console.log(data[index].time);
             let creatElement=document.createElement("div")
             creatElement.id="viewTime"
             creatElement.innerHTML=data[index].time
-            document.getElementsByClassName("content")[index].appendChild(creatElement)
+            document.getElementsByClassName("container-message")[index].appendChild(creatElement)
+            creatElement.addEventListener("click",()=>{
+              data[index].content="Message is removed"
+              model.deleteFiretoreQueries()
+              console.log(data);
+             
+              for (let i = 0; i < data.length; i++) {
+                model.updateFireStoreQueries(data[i])  
+              }
+              
             })
-            item.addEventListener("mouseout",(event)=>{
-                document.getElementById("viewTime").remove()
+
+            }
+        
+
+            
             })
+            // item.addEventListener("click",(event)=>{
+            //     document.getElementById("viewTime").remove()
+            // })
         })
     }
 }
